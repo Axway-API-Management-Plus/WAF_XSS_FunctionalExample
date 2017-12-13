@@ -30,21 +30,21 @@ SecDefaultAction "phase:2,deny,log"
 
 6. Create a basic Set Message Filter and Reflect Message filter policy to set a default 'OK' type message for test purposes. Give it a relative path behind the protected port. For this example, I have deployed a sample 200 OK XML response policy at '/echo'.
 
-![alt text](https://github.com/Axway-API-Management-Plus/MFA_Auth_Directory_Lookup/blob/master/example/src/directoryScreenshot.png "Directory Attributes")
+![alt text](https://github.com/Axway-API-Management-Plus/WAF_XSS_FunctionalExample/blob/master/example/src/sampleMessage.png "Sample Message")
 
 7. Call your policy via a web browser and ensure it responds as expected. Example: https://192.168.159.134:8445/echo
 
-![alt text](https://github.com/Axway-API-Management-Plus/MFA_Auth_Directory_Lookup/blob/master/example/src/directoryScreenshot.png "Directory Attributes")
+![alt text](https://github.com/Axway-API-Management-Plus/WAF_XSS_FunctionalExample/blob/master/example/src/sampleGoodResponse.png "Sample Good Response")
 
 8. Call your policy via a web browser with a sample script as a URL query parameter. This should fail if properly configured. Example: https://192.168.159.134:8445/echo<script>alert(1)</script>
 
-![alt text](https://github.com/Axway-API-Management-Plus/MFA_Auth_Directory_Lookup/blob/master/example/src/directoryScreenshot.png "Directory Attributes")
+![alt text](https://github.com/Axway-API-Management-Plus/WAF_XSS_FunctionalExample/blob/master/example/src/sampleBlockedResponse.png "Sample Blocked Response")
 
 9. Log into your API Gateway Management web console (eg https://hostmane:8090), and access the Traffic Monitor. Apply a filter to show messages blocked by the Threat Protection settings. Drill down on the transaction to review the capture.
 
-![alt text](https://github.com/Axway-API-Management-Plus/MFA_Auth_Directory_Lookup/blob/master/example/src/directoryScreenshot.png "Directory Attributes")
+![alt text](https://github.com/Axway-API-Management-Plus/WAF_XSS_FunctionalExample/blob/master/example/src/blockedTrafficMonitor.png "Threat Filtering")
 
-![alt text](https://github.com/Axway-API-Management-Plus/MFA_Auth_Directory_Lookup/blob/master/example/src/directoryScreenshot.png "Directory Attributes")
+![alt text](https://github.com/Axway-API-Management-Plus/WAF_XSS_FunctionalExample/blob/master/example/src/blockedRequestTrace.png "Blocked Transaction")
 
 ## API Management Version Compatibility
 This artefact was successfully tested for the following versions:
