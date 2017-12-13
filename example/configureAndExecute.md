@@ -6,25 +6,29 @@ Sample exercise to create a XSS Threat Protection profile, block a message with 
 1. Access your API Gateway via the CLI.
 
 2. Change directory to the threat protection directory. Unzip the Spider Labs rule set (file name may change with version).
-\# cd /opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection
-\# unzip SpiderLabs-owasp-modsecurity-crs-2.2.9-7-g3e6782b.zip
+```
+# cd /opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection
+# unzip SpiderLabs-owasp-modsecurity-crs-2.2.9-7-g3e6782b.zip
+```
 
 3. Access the threat protection default configuration directory and copy the Spider Labs XSS ruleset from the base rules to default actived rules.
-\# /opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection/default
-\# cp ../SpiderLabs-owasp-modsecurity-crs-3e6782b/base_rules/modsecurity_crs_41_xss_attacks.conf ./activated_rules/
+```
+# /opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection/default
+# cp ../SpiderLabs-owasp-modsecurity-crs-3e6782b/base_rules/modsecurity_crs_41_xss_attacks.conf ./activated_rules/
+```
 
 4. Modify opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection/default/modsecurity.conf file as follows:
 
-    a. Disable the DetectionOnly rule and enable enforcement:
+```
+a. Disable the DetectionOnly rule and enable enforcement:
+#SecRuleEngine DetectionOnly
+SecRuleEngine On
 
-    \#SecRuleEngine DetectionOnly
-    SecRuleEngine On
-
-    b. Add the following anywhere in the file to change the default action from block to deny.
-
-    \# My Rules
-    SecDefaultAction "phase:1,deny,log"
-    SecDefaultAction "phase:2,deny,log"
+b. Add the following anywhere in the file to change the default action from block to deny.
+#My Rules
+SecDefaultAction "phase:1,deny,log"
+SecDefaultAction "phase:2,deny,log"
+```
 
 5. Log into Policy Studio and access your API project. Create a Threat Protection Profile and apply to a port for testing, as documented here: https://docs.axway.com/bundle/APIGateway_753_AdministratorGuide_allOS_en_HTML5/page/Content/AdminGuideTopics/admin_waf.htm
 
