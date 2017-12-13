@@ -15,16 +15,16 @@ Sample exercise to create a XSS Threat Protection profile, block a message with 
 
 4. Modify opt/Axway/APIM-7.5.3/apigateway/system/conf/threat-protection/default/modsecurity.conf file as follows:
 
-a. Disable the DetectionOnly rule and enable enforcement:
+    a. Disable the DetectionOnly rule and enable enforcement:
 
-\#SecRuleEngine DetectionOnly
-SecRuleEngine On
+    \#SecRuleEngine DetectionOnly
+    SecRuleEngine On
 
-b. Add the following anywhere in the file to change the default action from block to deny.
+    b. Add the following anywhere in the file to change the default action from block to deny.
 
-\# My Rules
-SecDefaultAction "phase:1,deny,log"
-SecDefaultAction "phase:2,deny,log"
+    \# My Rules
+    SecDefaultAction "phase:1,deny,log"
+    SecDefaultAction "phase:2,deny,log"
 
 5. Log into Policy Studio and access your API project. Create a Threat Protection Profile and apply to a port for testing, as documented here: https://docs.axway.com/bundle/APIGateway_753_AdministratorGuide_allOS_en_HTML5/page/Content/AdminGuideTopics/admin_waf.htm
 
